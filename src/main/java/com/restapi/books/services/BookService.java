@@ -26,11 +26,14 @@ public class BookService {
 
 	//GET BOOK DETAILS OF PARTICULAR ID
 	public Book getBookById(int id){
-
-		//Stream API function & Lambda function
-		Book book = list.stream().filter(e -> e.getId()==id ).findFirst().get();
+		Book book =null;
+		try {
+			//Stream API function & Lambda function
+			book = list.stream().filter(e -> e.getId()==id ).findFirst().get();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return book;
-
 	}
 	
 	//FOR ADDING BOOK DETAILS
