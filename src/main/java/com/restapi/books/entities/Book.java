@@ -1,10 +1,12 @@
 package com.restapi.books.entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity 
@@ -14,15 +16,18 @@ public class Book {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Book_Id")
-	private int id;
+	private int id; 
+	
 	private String title;
-	private String author;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Author author;
 	
 	public Book() {
 		super();
 	}
 	
-	public Book(int id, String title, String author) {
+	public Book(int id, String title, Author author) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -41,10 +46,10 @@ public class Book {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getAuthor() {
+	public Author getAuthor() {
 		return author;
 	}
-	public void setAuthor(String author) {
+	public void setAuthor(Author author) {
 		this.author = author;
 	}
 	
