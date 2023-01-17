@@ -36,7 +36,7 @@ public class BookController {
 			 *      build():- For creating the object of the Message(Not Found)           
 			 */       
 		}
-		return ResponseEntity.of(Optional.of(list));
+		return ResponseEntity.status(HttpStatus.CREATED).body(list);
 		// of():- for creating the object of parameter passed by using Optional
 		//	   Use :-	It will take the list and go with OK status code
 	}
